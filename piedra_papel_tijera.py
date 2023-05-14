@@ -25,9 +25,15 @@ def decidirGanador(usuarioMovimiento, ordenadorMovimiento):
 print("JUEGO : Piedra, papel y tijera")
 while 1:
     comenzar = input("Quieres jugar? (s/n): ")
+    nombre = input("Selecciona el nombre del jugador: ")
+    intentos = int(input("Selecciona el numero de intetos: "))
+    contador_ordenador = 0
+    contador_usuario = 0
     if 's' in comenzar.lower():
         movimientoOrdenador = GenerarMovimientoOrdenador()
-        while True:
+        for i in range(intentos):
+            i += 1
+
             movimiento = input(
                 "Selecciona un movimiento ('p' para piedra / 'a' para papel / 't' para tijeras / 'l' para lagarto) o TERMINAR(terminar): ").lower()
             if movimiento == "terminar":
@@ -46,8 +52,15 @@ while 1:
                     usuarioMovimiento = LAGARTO
                 print(f"Elección del usuario: {usuarioMovimiento}")
                 if decidirGanador(usuarioMovimiento, movimientoOrdenador) == 1:
-                    print("Gana el usuario !!!")
+                    contador_usuario += 1
+
                 elif decidirGanador(usuarioMovimiento, movimientoOrdenador) == -1:
+                    contador_ordenador += 1
+
+
+
+
+
                     print("Gana el ordenador !!!")
 
 
@@ -55,8 +68,20 @@ while 1:
                 break
             else:
                 print("Entrada incorrecta. Vuelve a intentar.")
+
+
     elif 'n' in comenzar.lower():
         break
     else:
         print('Entrada incorrecta. Vuelve a intentar.')
+
     print()
+
+    if contador_usuario < contador_ordenador:
+        print("Ha ganado" + str(nombre))
+
+    elif contador_usuario > contador_ordenador:
+        print("Ha ganado el ordenador")
+
+    else:
+        print("Ha habido un empate")
