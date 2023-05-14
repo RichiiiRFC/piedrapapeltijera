@@ -3,9 +3,10 @@ import random
 PIEDRA = 'piedra'
 PAPEL = 'papel'
 TIJERA = 'tijera'
-opciones = [PIEDRA, PAPEL, TIJERA]
-primeroGana = [[PAPEL, PIEDRA], [TIJERA, PAPEL], [PIEDRA, TIJERA]]
-primeroPierde = [[PIEDRA, PAPEL], [PAPEL, TIJERA], [TIJERA, PIEDRA]]
+LAGARTO = 'lagarto'
+opciones = [PIEDRA, PAPEL, TIJERA, LAGARTO]
+primeroGana = [[PAPEL, PIEDRA], [TIJERA, PAPEL], [PIEDRA, TIJERA], [LAGARTO, PAPEL]]
+primeroPierde = [[PIEDRA, PAPEL], [PAPEL, TIJERA], [TIJERA, PIEDRA], [LAGARTO, PIEDRA], [LAGARTO, TIJERA]]
 
 
 def GenerarMovimientoOrdenador():
@@ -28,19 +29,21 @@ while 1:
         movimientoOrdenador = GenerarMovimientoOrdenador()
         while True:
             movimiento = input(
-                "Selecciona un movimiento ('p' para piedra / 'a' para papel / 't' para tijeras) o TERMINAR(terminar): ").lower()
+                "Selecciona un movimiento ('p' para piedra / 'a' para papel / 't' para tijeras / 'l' para lagarto) o TERMINAR(terminar): ").lower()
             if movimiento == "terminar":
                 print("Tienes miedo?")
                 break
             print(f"Elección del ordenador: {movimientoOrdenador}")
 
-            if 'p' in movimiento or 'a' in movimiento or 't' in movimiento or 'p' in movimiento:
+            if 'p' in movimiento or 'a' in movimiento or 't' in movimiento or 'p' in movimiento or 'l' in movimiento:
                 if 'p' in movimiento:
                     usuarioMovimiento = PIEDRA
                 elif 'a' in movimiento:
                     usuarioMovimiento = PAPEL
                 elif 't' in movimiento:
                     usuarioMovimiento = TIJERA
+                elif 'l' in movimiento:
+                    usuarioMovimiento = LAGARTO
                 print(f"Elección del usuario: {usuarioMovimiento}")
                 if decidirGanador(usuarioMovimiento, movimientoOrdenador) == 1:
                     print("Gana el usuario !!!")
