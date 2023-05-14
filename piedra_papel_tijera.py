@@ -27,6 +27,7 @@ while 1:
     if 's' in comenzar.lower():
         movimientoOrdenador = GenerarMovimientoOrdenador()
         while True:
+            nombre = input("Selecciona el nombre del jugador: ")
             movimiento = input(
                 "Selecciona un movimiento ('p' para piedra / 'a' para papel / 't' para tijeras): ").lower()
             print(f"Elección del ordenador: {movimientoOrdenador}")
@@ -39,7 +40,7 @@ while 1:
                     usuarioMovimiento = TIJERA
                 print(f"Elección del usuario: {usuarioMovimiento}")
                 if decidirGanador(usuarioMovimiento, movimientoOrdenador) == 1:
-                    print("Gana el usuario !!!")
+                    print("Gana" + str(nombre))
                 elif decidirGanador(usuarioMovimiento, movimientoOrdenador) == -1:
                     print("Gana el ordenador !!!")
                 elif decidirGanador(usuarioMovimiento, movimientoOrdenador) == 0:
