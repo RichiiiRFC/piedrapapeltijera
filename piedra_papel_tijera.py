@@ -10,11 +10,16 @@ primeroPierde = [[PIEDRA, PAPEL], [PAPEL, TIJERA], [TIJERA, PIEDRA], [LAGARTO, P
 
 
 def GenerarMovimientoOrdenador():
+    """
+    Esta función genera el movimiento del ordenador y lo devuelve
+    :return:Str
+    """
     movimiento = random.choice(opciones)
     return movimiento
 
 
 def decidirGanador(usuarioMovimiento, ordenadorMovimiento):
+
     if [usuarioMovimiento, ordenadorMovimiento] in primeroGana:
         return 1
     elif [usuarioMovimiento, ordenadorMovimiento] in primeroPierde:
@@ -29,6 +34,7 @@ while 1:
     intentos = int(input("Selecciona el numero de intetos: "))
     contador_ordenador = 0
     contador_usuario = 0
+    usuarioMovimiento = ""
     if 's' in comenzar.lower():
         movimientoOrdenador = GenerarMovimientoOrdenador()
         for i in range(intentos):
@@ -56,10 +62,6 @@ while 1:
 
                 elif decidirGanador(usuarioMovimiento, movimientoOrdenador) == -1:
                     contador_ordenador += 1
-
-
-
-
 
                     print("Gana el ordenador !!!")
 
